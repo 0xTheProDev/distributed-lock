@@ -1,0 +1,91 @@
+---
+name: Regression
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "*.json"
+      - "*.yaml"
+      - "packages/**"
+      - "!**.md"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "*.json"
+      - "*.yaml"
+      - "packages/**"
+      - "!**.md"
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+env:
+  CI: true
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  build:
+    name: Build Artifacts
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Environment
+        uses: ./.github/shared/setup
+
+      - name: Run Build
+        run: yarn build
+
+  test:
+    name: Unit Tests
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Environment
+        uses: ./.github/shared/setup
+
+      - name: Run Tests
+        run: yarn test:cov
+
+  quality:
+    name: Code Quality
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Environment
+        uses: ./.github/shared/setup
+
+      - name: Run Lint
+        run: yarn lint
+
+      - name: Run Format
+        run: yarn format
+
+  typecheck:
+    name: Type Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Environment
+        uses: ./.github/shared/setup
+
+      - name: Run Types
+        run: yarn typecheck
