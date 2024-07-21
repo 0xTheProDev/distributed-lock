@@ -1,7 +1,7 @@
 version: 2
 updates:
   - commit-message:
-      prefix: chore
+      prefix: chore(workflow)
     directory: "/"
     package-ecosystem: "github-actions"
     reviewers:
