@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "A Distributed Locking Mechanism implemented over Redis to provide Mutex in a Microservices Architecture",
   "bugs": {
-    "url": "https://github.com/0xTheProDev/Operational-Transformation/discussions"
+    "url": "https://github.com/0xTheProDev/distributed-lock/discussions"
   },
   "repository": {
     "type": "git",
