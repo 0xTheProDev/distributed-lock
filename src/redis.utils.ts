@@ -28,13 +28,13 @@ const getScript = (fileName: string): string => {
  * @param client - Redis Client instance.
  * @param key - Shared Key.
  * @param value - Expected Value.
- * @returns Status Code 0 for successful evaluation.
+ * @returns Number of keys deleted, 0 for none.
  */
 export const parityDel = (
   client: Redis,
   key: string,
   value: string,
-): Promise<0> => {
+): Promise<number> => {
   const digest = getScript("./parity-del.lua");
-  return client.evalsha(digest, 1, key, value) as Promise<0>;
+  return client.evalsha(digest, 1, key, value) as Promise<number>;
 };

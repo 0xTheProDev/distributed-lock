@@ -54,7 +54,7 @@ export class DistributedLock {
    * @private @property
    * NodeJS Timeout Id for the Timer Callback to release the Lock.
    */
-  private timeoutId: NodeJS.Timeout | undefined;
+  private timeoutId: NodeJS.Timeout | null = null;
 
   constructor(configuration: DistributedLockConfig) {
     this.redisClient = createRedisClient(configuration);
@@ -64,7 +64,10 @@ export class DistributedLock {
    * Cleanup any Side-effect or Open Connections.
    */
   async dispose(): Promise<void> {
-    clearTimeout(this.timeoutId);
+    if (this.timeoutId) {
+      clearTimeout(this.timeoutId);
+      this.timeoutId = null;
+    }
     await this.redisClient.quit();
   }
 
@@ -80,8 +83,14 @@ export class DistributedLock {
     callback: ExclusiveCallback<T>,
     options?: LockOptions,
   ): Promise<T> {
-    const executor = async () => {
+    const executor = async (): Promise<T> => {
       const lockId = await this.lock(scope, options);
+      if (lockId == null) {
+        throw new DistributedLockError(
+          `Failed to acquire lock for the resource "${scope}"`,
+        );
+      }
+
       const result = await callback();
       await this.unlock(scope, lockId);
       return result;
@@ -93,22 +102,26 @@ export class DistributedLock {
 
     const expiryInMs = await this.expiry(scope);
 
-    if (Number.isFinite(expiryInMs)) {
+    // Execute the function in a deferred manner only if there is valid expiry and an executor is yet to be scheduled.
+    if (expiryInMs > 0 && this.timeoutId == null) {
       return new Promise<T>((resolve, reject) => {
-        const deferredCb = () => executor().then(resolve, reject);
+        const deferredCb = () => {
+          executor().then(resolve, reject);
+          this.timeoutId = null;
+        };
         this.timeoutId = setTimeout(deferredCb, expiryInMs);
       });
     }
 
     throw new DistributedLockError(
-      `Unable to execute the function[${callback.name ?? "Function"}] within the exclusive region for the resource "${scope}"`,
+      `Unable to execute the function[${callback.name ?? "Anonymous Function"}] within the exclusive region for the resource "${scope}"`,
     );
   }
 
   /**
    * Countdown a Shared Exclusive Lock.
    * @param scope - Authorization Scope (e.g., Application or Resource Name).
-   * @returns Time to live for the lock.
+   * @returns Remaining time to live for the lock.
    */
   async expiry(scope: string) {
     try {
@@ -129,8 +142,8 @@ export class DistributedLock {
    */
   async isLocked(scope: string): Promise<boolean> {
     try {
-      const lockId = await this.redisClient.get(this.getKey(scope));
-      return lockId != null;
+      const lockId = await this.redisClient.exists(this.getKey(scope));
+      return !!lockId;
     } catch (err) {
       throw new DistributedLockError(
         `Failed to retrieve lock info for the resource "${scope}"`,
@@ -143,14 +156,15 @@ export class DistributedLock {
    * Acquire a Shared Exclusive Lock.
    * @param scope - Authorization Scope (e.g., Application or Resource Name).
    * @param options - Lock Configuration Options.
-   * @returns Globally Unique Lock Id.
+   * @returns Globally Unique Lock Id iff the Lock is acquired, null otherwise.
    */
-  async lock(scope: string, options?: LockOptions): Promise<LockId> {
+  async lock(scope: string, options?: LockOptions): Promise<LockId | null> {
     const lockId = this.getUniqueId();
+    let result: "OK" | null;
 
     try {
       if (options?.ttl) {
-        this.redisClient.set(
+        result = await this.redisClient.set(
           this.getKey(scope),
           lockId,
           "PX",
@@ -158,7 +172,7 @@ export class DistributedLock {
           "NX",
         );
       } else {
-        this.redisClient.set(this.getKey(scope), lockId, "NX");
+        result = await this.redisClient.set(this.getKey(scope), lockId, "NX");
       }
     } catch (err) {
       throw new DistributedLockError(
@@ -167,19 +181,23 @@ export class DistributedLock {
       );
     }
 
-    return lockId;
+    return result ? lockId : null;
   }
 
   /**
    * Release a Shared Exclusive Lock.
    * @param scope - Authorization Scope (e.g., Application or Resource Name).
    * @param lockId - Globally Unique Lock Id.
-   * @returns True, iff the lock was released successfully.
+   * @returns True, iff the lock was released successfully, false otherwise.
    */
-  async unlock(scope: string, lockId: LockId): Promise<true> {
+  async unlock(scope: string, lockId: LockId): Promise<boolean> {
     try {
-      await parityDel(this.redisClient, this.getKey(scope), lockId);
-      return true;
+      const numKeys = await parityDel(
+        this.redisClient,
+        this.getKey(scope),
+        lockId,
+      );
+      return !!numKeys;
     } catch (err) {
       throw new DistributedLockError(
         `Failed to release lock for the resource "${scope}"`,

@@ -29,6 +29,8 @@
 
 In modern digital systems, we are often working with Distributed Workloads, Horizontal Scaling and Microservices. These systems do not share the same memory spaces or sometimes even the same host machine. Because of which traditional Mutex and Semaphore does not adapt with the current requirements to acquire exclusive access to shared resources. This library aims to bridge that gap using a common Remote Dictionary Server (Redis) with special attention to easy to integrate APIs and performance.
 
+[Read More](https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html).
+
 ## Installation
 
 Install this package using your preferred package manager. See the example of [yarn](https://yarnpkg.com):
@@ -45,7 +47,7 @@ Most common usage entails executing a block of code (asynchronous functions are 
 import DistributedLock from "@0xtheprodev/distributed-lock";
 
 const distributedLock = new DistributedLock({
-  host: "redis-internal.example.com",
+  host: "redis://example.com",
   port: 6379,
 });
 
