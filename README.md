@@ -25,7 +25,7 @@
 
 ## Description
 
-> A Distributed Locking Mechanism implemented over Redis to provide Mutual Exclusion over Shared Resources in a Microservices Architecture.
+> A Distributed Locking Mechanism implemented using Redis to provide Mutual Exclusion over Shared Resources in a Microservices Architecture.
 
 In modern digital systems, we are often working with Distributed Workloads, Horizontal Scaling and Microservices. These systems do not share the same memory spaces or sometimes even the same host machine. Because of which traditional Mutex and Semaphore does not adapt with the current requirements to acquire exclusive access to shared resources. This library aims to bridge that gap using a common Remote Dictionary Server (Redis) with special attention to easy to integrate APIs and performance.
 
