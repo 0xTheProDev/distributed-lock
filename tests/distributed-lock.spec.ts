@@ -21,6 +21,10 @@ describe("DistributedLock", () => {
       }
     }
 
+    async exists(key: RedisKey): Promise<boolean> {
+      return this.store.has(key);
+    }
+
     async get(key: RedisKey): Promise<any> {
       return this.store.get(key)?.value;
     }
@@ -45,7 +49,7 @@ describe("DistributedLock", () => {
       ttlKey?: string,
       ttl?: number,
       exclusive?: string,
-    ): Promise<void> {
+    ): Promise<"OK"> {
       this.store.set(key, {
         exclusive,
         now: performance.now(),
@@ -53,6 +57,7 @@ describe("DistributedLock", () => {
         ttl,
         value,
       });
+      return "OK";
     }
 
     async ttl(key: RedisKey): Promise<number> {
