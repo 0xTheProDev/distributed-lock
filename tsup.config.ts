@@ -32,7 +32,7 @@ export default defineConfig({
   entry: ["src/index.ts"],
   format: ["cjs", "esm"],
   minify: true,
-  publicDir: "src/redis",
+  publicDir: "redis",
   outDir: "dist",
   shims: true,
   splitting: false,
