@@ -4,7 +4,7 @@
 
 [![Regression](https://github.com/0xTheProDev/distributed-lock/actions/workflows/regression.yml/badge.svg?style=for-the-badge)](https://github.com/0xTheProDev/distributed-lock/actions/workflows/regression.yml)
 [![Release](https://github.com/0xTheProDev/distributed-lock/actions/workflows/release.yml/badge.svg?style=for-the-badge)](https://github.com/0xTheProDev/distributed-lock/actions/workflows/release.yml)
-
+[![Code Coverage](https://codecov.io/github/0xTheProDev/distributed-lock/graph/badge.svg?token=Y2LTY0MA2U)](https://codecov.io/github/0xTheProDev/distributed-lock)
 [![Sponsor](https://img.shields.io/badge/sponsor-30363D?style=for-the-badge&logo=GitHub-Sponsors&logoColor=#white)](https://github.com/sponsors/0xTheProDev)
 [![Npm Version](https://img.shields.io/npm/v/@0xtheprodev/distributed-lock?style=for-the-badge)](https://www.npmjs.com/package/@0xtheprodev/distributed-lock)
 [![Weekly Downloads](https://img.shields.io/npm/dw/@0xtheprodev/distributed-lock?style=for-the-badge)](https://www.npmjs.com/package/@0xtheprodev/distributed-lock)

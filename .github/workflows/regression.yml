@@ -61,6 +61,11 @@ jobs:
       - name: Run Tests
         run: yarn test:cov
 
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
   quality:
     name: Code Quality
     runs-on: ubuntu-latest
