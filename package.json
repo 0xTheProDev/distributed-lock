@@ -2,6 +2,18 @@
   "name": "@0xtheprodev/distributed-lock",
   "version": "1.1.0",
   "description": "A Distributed Locking Mechanism implemented over Redis to provide Mutex in a Microservices Architecture",
+  "keywords": [
+    "nodejs",
+    "redis",
+    "distributed-systems",
+    "microservices",
+    "typescript",
+    "mutex",
+    "semaphore",
+    "distributed-lock",
+    "nestjs",
+    "shared-access"
+  ],
   "bugs": {
     "url": "https://github.com/0xTheProDev/distributed-lock/discussions"
   },
