@@ -1,5 +1,5 @@
 import Redis, { RedisKey } from "ioredis";
-import fs from "node:fs";
+import fs from "node:fs/promises";
 import { DistributedLock } from "../src/distributed-lock";
 import * as Client from "../src/redis.client";
 
@@ -70,7 +70,7 @@ describe("DistributedLock", () => {
 
   beforeAll(async () => {
     // Mock File System to ensure that the Lua scripts do not load in test environment.
-    vi.spyOn(fs, "readFileSync").mockReturnValue("");
+    vi.spyOn(fs, "readFile").mockResolvedValue("");
 
     // Mock Redis Client factory to use Test implementation.
     vi.spyOn(Client, "createRedisClient").mockImplementation(

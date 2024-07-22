@@ -1,25 +1,25 @@
 # Distributed Lock
 
+[![Distributed Lock Icon](.github/assets/distributed-lock-original.png)](https://github.com/0xTheProDev/distributed-lock)
+
 ---
 
 [![Regression](https://github.com/0xTheProDev/distributed-lock/actions/workflows/regression.yml/badge.svg?style=for-the-badge)](https://github.com/0xTheProDev/distributed-lock/actions/workflows/regression.yml)
 [![Release](https://github.com/0xTheProDev/distributed-lock/actions/workflows/release.yml/badge.svg?style=for-the-badge)](https://github.com/0xTheProDev/distributed-lock/actions/workflows/release.yml)
-[![Code Coverage](https://codecov.io/github/0xTheProDev/distributed-lock/graph/badge.svg?token=Y2LTY0MA2U)](https://codecov.io/github/0xTheProDev/distributed-lock)
+
 [![Sponsor](https://img.shields.io/badge/sponsor-30363D?style=for-the-badge&logo=GitHub-Sponsors&logoColor=#white)](https://github.com/sponsors/0xTheProDev)
+[![Node LTS](https://img.shields.io/node/v-lts/@0xtheprodev/distributed-lock?style=for-the-badge)](https://nodejs.org)
 [![Npm Version](https://img.shields.io/npm/v/@0xtheprodev/distributed-lock?style=for-the-badge)](https://www.npmjs.com/package/@0xtheprodev/distributed-lock)
 [![Weekly Downloads](https://img.shields.io/npm/dw/@0xtheprodev/distributed-lock?style=for-the-badge)](https://www.npmjs.com/package/@0xtheprodev/distributed-lock)
-[![Minified Zipped Size](https://img.shields.io/bundlephobia/minzip/@0xtheprodev/distributed-lock?style=for-the-badge)](https://www.npmjs.com/package/@0xtheprodev/distributed-lock)
-[![Dependencies](https://img.shields.io/librariesio/release/npm/@0xtheprodev/distributed-lock?style=for-the-badge)](https://www.npmjs.com/package/@0xtheprodev/distributed-lock)
 [![Dependents](https://img.shields.io/librariesio/dependents/npm/@0xtheprodev/distributed-lock?style=for-the-badge)](https://www.npmjs.com/package/@0xtheprodev/distributed-lock)
+[![Minified Zipped Size](https://img.shields.io/bundlephobia/minzip/@0xtheprodev/distributed-lock?style=for-the-badge)](https://www.npmjs.com/package/@0xtheprodev/distributed-lock)
+[![Code Coverage](https://img.shields.io/codecov/c/github/0xtheprodev/distributed-lock?style=for-the-badge&token=Y2LTY0MA2U)](https://codecov.io/github/0xTheProDev/distributed-lock)
 [![Types](https://img.shields.io/npm/types/@0xtheprodev/distributed-lock?style=for-the-badge)](https://www.npmjs.com/package/@0xtheprodev/distributed-lock)
 [![License](https://img.shields.io/github/license/0xTheProDev/distributed-lock?style=for-the-badge&label=licens)](https://github.com/0xTheProDev/distributed-lock/blob/main/LICENSE)
 [![Open Issues](https://img.shields.io/github/issues-raw/0xTheProDev/distributed-lock?style=for-the-badge)](https://github.com/0xTheProDev/distributed-lock/issues)
 [![Closed Issues](https://img.shields.io/github/issues-closed-raw/0xTheProDev/distributed-lock?style=for-the-badge)](https://github.com/0xTheProDev/distributed-lock/issues?q=is%3Aissue+is%3Aclosed)
 [![Open Pulls](https://img.shields.io/github/issues-pr-raw/0xTheProDev/distributed-lock?style=for-the-badge)](https://github.com/0xTheProDev/distributed-lock/pulls)
 [![Closed Pulls](https://img.shields.io/github/issues-pr-closed-raw/0xTheProDev/distributed-lock?style=for-the-badge)](https://github.com/0xTheProDev/distributed-lock/pulls?q=is%3Apr+is%3Aclosed)
-[![Stars](https://img.shields.io/github/stars/0xTheProDev/distributed-lock?style=for-the-badge)](https://github.com/0xTheProDev/distributed-lock/stargazers)
-[![Forks](https://img.shields.io/github/forks/0xTheProDev/distributed-lock?style=for-the-badge)](https://github.com/0xTheProDev/distributed-lock/network/members)
-[![Discussions](https://img.shields.io/github/discussions/0xTheProDev/distributed-lock?style=for-the-badge)](https://github.com/0xTheProDev/distributed-lock/discussions)
 [![Contributors](https://img.shields.io/github/contributors/0xTheProDev/distributed-lock?style=for-the-badge)](https://github.com/0xTheProDev/distributed-lock/graphs/contributors)
 [![Activity](https://img.shields.io/github/last-commit/0xTheProDev/distributed-lock?style=for-the-badge&label=most%20recent%20activity)](https://github.com/0xTheProDev/distributed-lock/pulse)
 

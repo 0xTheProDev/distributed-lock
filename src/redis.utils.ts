@@ -1,6 +1,6 @@
 import { Redis } from "ioredis";
 import crypto from "node:crypto";
-import fs from "node:fs";
+import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -16,9 +16,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
  * @param fileName - Name of the file that contains the Lua Script.
  * @returns SHA Digest of the Script in Hexadecimal encoding.
  */
-const getScript = (fileName: string): string => {
+const getScript = async (fileName: string): Promise<string> => {
   const srcPath = path.resolve(__dirname, fileName);
-  const script = fs.readFileSync(srcPath, "utf8");
+  const script = await fs.readFile(srcPath, "utf8");
   return crypto.createHash("sha1").update(script).digest("hex");
 };
 
@@ -30,11 +30,11 @@ const getScript = (fileName: string): string => {
  * @param value - Expected Value.
  * @returns Number of keys deleted, 0 for none.
  */
-export const parityDel = (
+export const parityDel = async (
   client: Redis,
   key: string,
   value: string,
 ): Promise<number> => {
-  const digest = getScript("./parity-del.lua");
-  return client.evalsha(digest, 1, key, value) as Promise<number>;
+  const digest = await getScript("./parity-del.lua");
+  return (await client.evalsha(digest, 1, key, value)) as Promise<number>;
 };
