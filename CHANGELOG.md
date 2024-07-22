@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.0
+
+### Minor Changes
+
+- 2ff1991: Load Redis Scripts (Lua) in Asynchronous Way.
+
 ## 1.0.0
 
 ### Major Changes
