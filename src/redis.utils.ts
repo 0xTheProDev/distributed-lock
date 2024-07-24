@@ -36,5 +36,6 @@ export const parityDel = async (
   value: string,
 ): Promise<number> => {
   const digest = await getScript("./parity-del.lua");
-  return (await client.evalsha(digest, 1, key, value)) as Promise<number>;
+  const numKeys = (await client.evalsha(digest, 1, key, value)) as number;
+  return numKeys;
 };

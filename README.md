@@ -8,13 +8,13 @@
 [![Release](https://github.com/0xTheProDev/distributed-lock/actions/workflows/release.yml/badge.svg?style=for-the-badge)](https://github.com/0xTheProDev/distributed-lock/actions/workflows/release.yml)
 
 [![Sponsor](https://img.shields.io/badge/sponsor-30363D?style=for-the-badge&logo=GitHub-Sponsors&logoColor=#white)](https://github.com/sponsors/0xTheProDev)
-[![Node LTS](https://img.shields.io/node/v-lts/@0xtheprodev/distributed-lock?style=for-the-badge)](https://nodejs.org)
-[![Npm Version](https://img.shields.io/npm/v/@0xtheprodev/distributed-lock?style=for-the-badge)](https://www.npmjs.com/package/@0xtheprodev/distributed-lock)
-[![Weekly Downloads](https://img.shields.io/npm/dw/@0xtheprodev/distributed-lock?style=for-the-badge)](https://www.npmjs.com/package/@0xtheprodev/distributed-lock)
-[![Dependents](https://img.shields.io/librariesio/dependents/npm/@0xtheprodev/distributed-lock?style=for-the-badge)](https://www.npmjs.com/package/@0xtheprodev/distributed-lock)
-[![Minified Zipped Size](https://img.shields.io/bundlephobia/minzip/@0xtheprodev/distributed-lock?style=for-the-badge)](https://www.npmjs.com/package/@0xtheprodev/distributed-lock)
+[![Node LTS](https://img.shields.io/node/v-lts/@theprodev/distributed-lock?style=for-the-badge)](https://nodejs.org)
+[![Npm Version](https://img.shields.io/npm/v/@theprodev/distributed-lock?style=for-the-badge)](https://www.npmjs.com/package/@theprodev/distributed-lock)
+[![Weekly Downloads](https://img.shields.io/npm/dw/@theprodev/distributed-lock?style=for-the-badge)](https://www.npmjs.com/package/@theprodev/distributed-lock)
+[![Dependents](https://img.shields.io/librariesio/dependents/npm/@theprodev/distributed-lock?style=for-the-badge)](https://www.npmjs.com/package/@theprodev/distributed-lock)
+[![Minified Zipped Size](https://img.shields.io/bundlephobia/minzip/@theprodev/distributed-lock?style=for-the-badge)](https://www.npmjs.com/package/@theprodev/distributed-lock)
 [![Code Coverage](https://img.shields.io/codecov/c/github/0xtheprodev/distributed-lock?style=for-the-badge&token=Y2LTY0MA2U)](https://codecov.io/github/0xTheProDev/distributed-lock)
-[![Types](https://img.shields.io/npm/types/@0xtheprodev/distributed-lock?style=for-the-badge)](https://www.npmjs.com/package/@0xtheprodev/distributed-lock)
+[![Types](https://img.shields.io/npm/types/@theprodev/distributed-lock?style=for-the-badge)](https://www.npmjs.com/package/@theprodev/distributed-lock)
 [![License](https://img.shields.io/github/license/0xTheProDev/distributed-lock?style=for-the-badge&label=licens)](https://github.com/0xTheProDev/distributed-lock/blob/main/LICENSE)
 [![Open Issues](https://img.shields.io/github/issues-raw/0xTheProDev/distributed-lock?style=for-the-badge)](https://github.com/0xTheProDev/distributed-lock/issues)
 [![Closed Issues](https://img.shields.io/github/issues-closed-raw/0xTheProDev/distributed-lock?style=for-the-badge)](https://github.com/0xTheProDev/distributed-lock/issues?q=is%3Aissue+is%3Aclosed)
@@ -36,7 +36,7 @@ In modern digital systems, we are often working with Distributed Workloads, Hori
 Install this package using your preferred package manager. See the example of [yarn](https://yarnpkg.com):
 
 ```sh
-yarn add @0xtheprodev/distributed-lock
+yarn add @theprodev/distributed-lock
 ```
 
 ## Usage
@@ -44,7 +44,7 @@ yarn add @0xtheprodev/distributed-lock
 Most common usage entails executing a block of code (asynchronous functions are supported) within a Mutual Exclusion region which ensures that no other code is being executed on the same resources.
 
 ```ts
-import DistributedLock from "@0xtheprodev/distributed-lock";
+import DistributedLock from "@theprodev/distributed-lock";
 
 const distributedLock = new DistributedLock({
   host: "redis://example.com",
@@ -89,3 +89,7 @@ See [Contributing Guidelines](https://github.com/0xTheProDev/distributed-lock/bl
 ## License
 
 This project is licensed under the terms of the MIT license, see [LICENSE](https://github.com/0xTheProDev/distributed-lock/blob/main/LICENSE) for more details.
+
+<a href="https://github.com/0xTheProDev">
+  <img src=".github/assets/the-pro-dev-original.png" alt="The Pro Dev" height="120" width="120"/>
+</a>

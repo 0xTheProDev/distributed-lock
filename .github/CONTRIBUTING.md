@@ -8,7 +8,7 @@ In this guide, you will get an overview of the contribution workflow from engagi
 
 ## New Contributor Guidelines
 
-See the [README](https://github.com/scorchjs/scorchjs#readme) to get an overview of the project. Here are some helpful resources to get you comfortable with open source contribution:
+See the [README](https://github.com/0xTheProDev/distributed-lock#readme) to get an overview of the project. Here are some helpful resources to get you comfortable with open source contribution:
 
 - [Finding ways to contribute to open source on GitHub](https://docs.github.com/en/get-started/exploring-projects-on-github/finding-ways-to-contribute-to-open-source-on-github)
 - [Set up Git](https://docs.github.com/en/get-started/quickstart/set-up-git)
@@ -21,7 +21,7 @@ Below you will find the process and workflow used to review and merge your valua
 
 ### Step 0 : Find an issue
 
-- Take a look at the Existing Issues or visit [Discussions Section](https://github.com/scorchjs/scorchjs/discussions) to engage into discussion about feature request or bug reporting.
+- Take a look at the Existing Issues or visit [Discussions Section](https://github.com/0xTheProDev/distributed-lock/discussions) to engage into discussion about feature request or bug reporting.
 - If the issue doesn't exist in our issue tracker, the maintainer will yield a issue from the discussion with proper description and milestone.
 - Once you select an issue, subscribe to it and interact with the maintainer/reporter in regular interval to describe your willingness or progress towards that issue.
 - Note: Every pull request in this project should have an associated issue registered.
@@ -32,9 +32,9 @@ Below you will find the process and workflow used to review and merge your valua
   Keep a reference to the original project in `upstream` remote as shown below.
 
 ```bash
-$ git clone https://github.com/<your-username>/scorchjs
-$ cd scorchjs
-$ git remote add upstream https://github.com/scorchjs/scorchjs
+$ git clone https://github.com/<your-username>/distributed-lock
+$ cd distributed-lock
+$ git remote add upstream https://github.com/0xTheProDev/distributed-lock
 $ git fetch upstream
 ```
 
