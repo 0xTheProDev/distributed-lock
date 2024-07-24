@@ -1,3 +1,5 @@
+<!-- markdownlint-configure-file { "MD033": false } -->
+
 # Distributed Lock
 
 [![Distributed Lock Icon](.github/assets/distributed-lock-original.png)](https://github.com/0xTheProDev/distributed-lock)
