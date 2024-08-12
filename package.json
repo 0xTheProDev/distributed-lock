@@ -50,7 +50,7 @@
   "devDependencies": {
     "@changesets/cli": "2.27.7",
     "@swc/core": "1.7.10",
-    "@theprodev/eslint-config": "0.1.0",
+    "@theprodev/eslint-config": "0.2.0",
     "@theprodev/prettier-config": "0.1.0",
     "@theprodev/tsconfigs": "0.1.0",
     "@theprodev/tsup-config": "0.2.0",
