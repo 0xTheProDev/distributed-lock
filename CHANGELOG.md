@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.2
+
+### Patch Changes
+
+- 8935417: Fix TSup Build Configuration for DTS.
+
 ## 0.1.1
 
 ### Patch Changes
