@@ -53,7 +53,7 @@
     "@theprodev/eslint-config": "0.2.0",
     "@theprodev/prettier-config": "0.1.0",
     "@theprodev/tsconfigs": "0.1.0",
-    "@theprodev/tsup-config": "0.2.0",
+    "@theprodev/tsup-config": "0.3.1",
     "@types/node": "22.2.0",
     "@types/uuid": "10.0.0",
     "@vitest/coverage-v8": "2.0.5",
