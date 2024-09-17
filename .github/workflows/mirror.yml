@@ -21,7 +21,7 @@ jobs:
           fetch-depth: 0
 
       - name: Mirror Repository
-        uses: ./.github/shared/gitlab
+        uses: 0xTheProDev/Gitlab-Mirror-Action@v1
         with:
           followTags: true
           password: ${{ secrets.GITLAB_PAT }}
