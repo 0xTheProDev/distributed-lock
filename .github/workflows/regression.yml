@@ -13,11 +13,11 @@ on:
   pull_request:
     branches:
       - main
-    paths:
-      - "*.json"
-      - "*.yml"
-      - "packages/**"
-      - "!**.md"
+    # paths:
+    #   - "*.json"
+    #   - "*.yml"
+    #   - "packages/**"
+    #   - "!**.md"
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
