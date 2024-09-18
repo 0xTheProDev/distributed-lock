@@ -17,7 +17,7 @@
 [![Minified Zipped Size](https://img.shields.io/bundlephobia/minzip/@theprodev/distributed-lock?style=for-the-badge)](https://www.npmjs.com/package/@theprodev/distributed-lock)
 [![Code Coverage](https://img.shields.io/codecov/c/github/0xtheprodev/distributed-lock?style=for-the-badge&token=Y2LTY0MA2U)](https://codecov.io/github/0xTheProDev/distributed-lock)
 [![Types](https://img.shields.io/npm/types/@theprodev/distributed-lock?style=for-the-badge)](https://www.npmjs.com/package/@theprodev/distributed-lock)
-[![License](https://img.shields.io/github/license/0xTheProDev/distributed-lock?style=for-the-badge&label=licens)](https://github.com/0xTheProDev/distributed-lock/blob/main/LICENSE)
+[![License](https://img.shields.io/github/license/0xTheProDev/distributed-lock?style=for-the-badge&label=license)](https://github.com/0xTheProDev/distributed-lock/blob/main/LICENSE)
 [![Open Issues](https://img.shields.io/github/issues-raw/0xTheProDev/distributed-lock?style=for-the-badge)](https://github.com/0xTheProDev/distributed-lock/issues)
 [![Closed Issues](https://img.shields.io/github/issues-closed-raw/0xTheProDev/distributed-lock?style=for-the-badge)](https://github.com/0xTheProDev/distributed-lock/issues?q=is%3Aissue+is%3Aclosed)
 [![Open Pulls](https://img.shields.io/github/issues-pr-raw/0xTheProDev/distributed-lock?style=for-the-badge)](https://github.com/0xTheProDev/distributed-lock/pulls)

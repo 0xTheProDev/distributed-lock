@@ -21,9 +21,9 @@ jobs:
           fetch-depth: 0
 
       - name: Mirror Repository
-        uses: 0xTheProDev/Gitlab-Mirror-Action@v1
+        uses: 0xTheProDev/gitlab-mirror@v1
         with:
-          followTags: true
+          follow-tags: true
           password: ${{ secrets.GITLAB_PAT }}
-          projectId: "distributed-lock"
-          userName: "0xTheProDev"
+          project-id: "distributed-lock"
+          username: "0xTheProDev"
