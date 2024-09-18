@@ -7,7 +7,7 @@ on:
       - main
     paths:
       - "*.json"
-      - "*.yaml"
+      - "*.yml"
       - "packages/**"
       - "!**.md"
   pull_request:
@@ -15,7 +15,7 @@ on:
       - main
     paths:
       - "*.json"
-      - "*.yaml"
+      - "*.yml"
       - "packages/**"
       - "!**.md"
 
