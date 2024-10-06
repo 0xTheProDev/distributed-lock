@@ -25,10 +25,10 @@ type LockId = string;
 type TimeInMilliSecond = number;
 
 /**
- * @internal
+ * @public
  * Lock Configuration Options.
  */
-type LockOptions = {
+export type LockOptions = {
   /** Time to live before the Lock expires (in Milliseconds). */
   ttl?: TimeInMilliSecond;
 };
