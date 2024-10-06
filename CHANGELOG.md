@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.0
+
+### Minor Changes
+
+- 80a334e: Expose Lock Option Interface for Application to Consume and Extend. Security and Patch upgrades for the dependencies.
+
 ## 0.1.2
 
 ### Patch Changes
