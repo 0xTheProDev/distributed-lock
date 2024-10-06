@@ -1,6 +1,6 @@
 {
   "name": "@theprodev/distributed-lock",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "A Distributed Locking Mechanism implemented over Redis to provide Mutex in a Microservices Architecture",
   "keywords": [
     "nodejs",
