@@ -54,7 +54,7 @@
     "@theprodev/prettier-config": "0.1.0",
     "@theprodev/tsconfigs": "0.1.0",
     "@theprodev/tsup-config": "0.3.1",
-    "@types/node": "22.7.4",
+    "@types/node": "22.7.5",
     "@types/uuid": "10.0.0",
     "@vitest/coverage-v8": "2.1.2",
     "check-yarn-lock": "0.2.1",
