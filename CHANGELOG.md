@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.0
+
+### Minor Changes
+
+- b8571bb: Replace uuid npm library with native crypto API to generate Globally Unique Ids. Use SHAsum to reuse already executed Redis Server Script.
+
 ## 0.2.0
 
 ### Minor Changes
