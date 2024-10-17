@@ -17,7 +17,7 @@ const defaultConfiguration: Partial<DistributedLockConfig> = {
   enableOfflineQueue: false,
   enableReadyCheck: true,
   keepAlive: 1,
-  keyPrefix: "distributed-lock",
+  keyPrefix: "<distributed-lock>",
   lazyConnect: true,
   maxRetriesPerRequest: 0,
 };
