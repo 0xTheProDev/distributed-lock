@@ -1,10 +1,16 @@
 /**
  * @internal
+ * An Object optionally wrapped inside a Promise.
+ */
+export type PromiseLike<T> = T | Promise<T>;
+
+/**
+ * @internal
  * Functional Block to Execute in Exclusive Region.
  * The block must return an Observable.
  */
 export type ExclusiveCallback<T> = {
-  (): T | Promise<T>;
+  (): PromiseLike<T>;
 };
 
 /**
