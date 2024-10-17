@@ -21,6 +21,19 @@ describe("DistributedLock", () => {
       }
     }
 
+    async evalsha(
+      _src: unknown,
+      _numKeys: unknown,
+      key: RedisKey,
+      value: any,
+    ): Promise<void> {
+      const t = this.store.get(key);
+
+      if (t?.value === value) {
+        this.store.delete(key);
+      }
+    }
+
     async exists(key: RedisKey): Promise<boolean> {
       return this.store.has(key);
     }
