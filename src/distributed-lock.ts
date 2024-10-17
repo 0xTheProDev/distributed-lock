@@ -1,43 +1,15 @@
 import Redis from "ioredis";
-import { v4 as uuid } from "uuid";
+
+import { DistributedLockError } from "./distributed-lock.error";
+import { getKey, getUniqueId } from "./distributed-lock.util";
 import { createRedisClient, DistributedLockConfig } from "./redis.client";
 import { parityDel } from "./redis.utils";
 
-/**
- * @internal
- * Functional Block to Execute in Exclusive Region.
- * The block must return an Observable.
- */
-type ExclusiveCallback<T> = {
-  (): T | Promise<T>;
-};
-
-/**
- * @internal
- * Mutual Exclusive Lock Identifier.
- */
-type LockId = string;
-
-/**
- * @internal
- * Time in MilliSecond unit.
- */
-type TimeInMilliSecond = number;
-
-/**
- * @public
- * Lock Configuration Options.
- */
-export type LockOptions = {
-  /** Time to live before the Lock expires (in Milliseconds). */
-  ttl?: TimeInMilliSecond;
-};
-
-/**
- * @public
- * Error Class for Distributed Lock.
- */
-export class DistributedLockError extends Error {}
+import type {
+  ExclusiveCallback,
+  LockId,
+  LockOptions,
+} from "./distributed-lock.types";
 
 /**
  * @public
@@ -58,6 +30,14 @@ export class DistributedLock {
 
   constructor(configuration: DistributedLockConfig) {
     this.redisClient = createRedisClient(configuration);
+  }
+
+  /**
+   * Connects with the Server. Use this method before calling any function
+   * to check if connected with server when using `lazyConnect: true`.
+   */
+  async connect(): Promise<void> {
+    await this.redisClient.connect();
   }
 
   /**
@@ -96,11 +76,11 @@ export class DistributedLock {
       return result;
     };
 
-    if (!(await this.isLocked(scope))) {
+    const expiryInMs = await this.expiry(scope);
+
+    if (expiryInMs == 0) {
       return executor();
     }
-
-    const expiryInMs = await this.expiry(scope);
 
     // Execute the function in a deferred manner only if there is valid expiry and an executor is yet to be scheduled.
     if (expiryInMs > 0 && this.timeoutId == null) {
@@ -125,7 +105,7 @@ export class DistributedLock {
    */
   async expiry(scope: string) {
     try {
-      const ttl = await this.redisClient.pttl(this.getKey(scope));
+      const ttl = await this.redisClient.pttl(getKey(scope));
       return ttl > 0 ? ttl : 0;
     } catch (err) {
       throw new DistributedLockError(
@@ -142,7 +122,7 @@ export class DistributedLock {
    */
   async isLocked(scope: string): Promise<boolean> {
     try {
-      const lockId = await this.redisClient.exists(this.getKey(scope));
+      const lockId = await this.redisClient.exists(getKey(scope));
       return !!lockId;
     } catch (err) {
       throw new DistributedLockError(
@@ -159,20 +139,20 @@ export class DistributedLock {
    * @returns Globally Unique Lock Id iff the Lock is acquired, null otherwise.
    */
   async lock(scope: string, options?: LockOptions): Promise<LockId | null> {
-    const lockId = this.getUniqueId();
+    const lockId = getUniqueId();
     let result: "OK" | null;
 
     try {
       if (options?.ttl) {
         result = await this.redisClient.set(
-          this.getKey(scope),
+          getKey(scope),
           lockId,
           "PX",
           options.ttl,
           "NX",
         );
       } else {
-        result = await this.redisClient.set(this.getKey(scope), lockId, "NX");
+        result = await this.redisClient.set(getKey(scope), lockId, "NX");
       }
     } catch (err) {
       throw new DistributedLockError(
@@ -192,11 +172,7 @@ export class DistributedLock {
    */
   async unlock(scope: string, lockId: LockId): Promise<boolean> {
     try {
-      const numKeys = await parityDel(
-        this.redisClient,
-        this.getKey(scope),
-        lockId,
-      );
+      const numKeys = await parityDel(this.redisClient, getKey(scope), lockId);
       return !!numKeys;
     } catch (err) {
       throw new DistributedLockError(
@@ -204,24 +180,5 @@ export class DistributedLock {
         { cause: err },
       );
     }
-  }
-
-  /**
-   * @private
-   * Produce Key to Hold the Lock after Acquiring.
-   * @param scope - Authorization Scope (e.g., Application or Resource Name).
-   * @returns Redis Key to hold the Lock.
-   */
-  private getKey(scope: string): `${string}:lock` {
-    return `${scope}:lock`;
-  }
-
-  /**
-   * @private
-   * Generate Globally Unique Lock Identifier.
-   * @returns The Lock Id Generated.
-   */
-  private getUniqueId(): LockId {
-    return uuid(null, Buffer.alloc(16)).toString("base64");
   }
 }

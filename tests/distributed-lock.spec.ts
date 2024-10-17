@@ -8,7 +8,7 @@ describe("DistributedLock", () => {
   class RedisClient {
     private readonly store = new Map<RedisKey, any>();
 
-    async evalsha(
+    async eval(
       _src: unknown,
       _numKeys: unknown,
       key: RedisKey,

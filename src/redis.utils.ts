@@ -1,5 +1,4 @@
 import { Redis } from "ioredis";
-import crypto from "node:crypto";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -14,12 +13,12 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
  * @internal
  * Create JavaScript Function that executes a given Lua Script.
  * @param fileName - Name of the file that contains the Lua Script.
- * @returns SHA Digest of the Script in Hexadecimal encoding.
+ * @returns Lua Script in UTF-8 encoding.
  */
 const getScript = async (fileName: string): Promise<string> => {
   const srcPath = path.resolve(__dirname, fileName);
   const script = await fs.readFile(srcPath, "utf8");
-  return crypto.createHash("sha1").update(script).digest("hex");
+  return script;
 };
 
 /**
@@ -35,7 +34,7 @@ export const parityDel = async (
   key: string,
   value: string,
 ): Promise<number> => {
-  const digest = await getScript("./parity-del.lua");
-  const numKeys = (await client.evalsha(digest, 1, key, value)) as number;
+  const script = await getScript("./parity-del.lua");
+  const numKeys = (await client.eval(script, 1, key, value)) as number;
   return numKeys;
 };
