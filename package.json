@@ -44,7 +44,7 @@
   },
   "prettier": "@theprodev/prettier-config",
   "dependencies": {
-    "ioredis": "5.4.1"
+    "ioredis": "5.4.2"
   },
   "devDependencies": {
     "@changesets/cli": "2.27.10",
