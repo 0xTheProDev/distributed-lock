@@ -5,7 +5,6 @@ This documentation contains a set of guidelines to help you with the pull reques
 **Please ensure you adhere to every item in this list.**
 
 - As a Contributor:
-
   - [ ] The PR should have commits that follows the standards mentioned [here](.CONTRIBUTING.md)
   - [ ] The PR should only be made against existing issues. If a certain issue does not exist; kindly open a thread in [**Discussion**](https://github.com/0xTheProDev/distributed-lock/discussions).
   - [ ] For a corresponding issue, add either `Fixes #1234` or `Updates #1234`, where `1234` refers to that issue id.
