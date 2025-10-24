@@ -48,13 +48,13 @@
   },
   "devDependencies": {
     "@changesets/cli": "2.29.7",
-    "@swc/core": "1.13.5",
+    "@swc/core": "1.13.21",
     "@theprodev/eslint-config": "0.3.1",
     "@theprodev/prettier-config": "0.1.0",
     "@theprodev/tsconfigs": "0.3.0",
     "@theprodev/tsup-config": "0.4.0",
     "@types/node": "24.9.1",
-    "@vitest/coverage-v8": "4.0.1",
+    "@vitest/coverage-v8": "4.0.2",
     "check-yarn-lock": "0.2.1",
     "eslint": "9.38.0",
     "husky": "9.1.7",
@@ -66,7 +66,7 @@
     "typescript": "5.9.3",
     "unplugin-swc": "1.5.8",
     "vite-tsconfig-paths": "5.1.4",
-    "vitest": "4.0.1"
+    "vitest": "4.0.2"
   },
   "packageManager": "yarn@1.22.0",
   "engines": {
