@@ -1,7 +1,9 @@
-import Redis, { RedisKey } from "ioredis";
+import Redis from "ioredis";
 import fs from "node:fs/promises";
 import { DistributedLock } from "../src/distributed-lock";
 import * as Client from "../src/redis.client";
+
+import type { RedisKey } from "ioredis";
 
 describe("DistributedLock", () => {
   // Mock implementation of the Redis interface.
