@@ -2,7 +2,7 @@ import Redis from "ioredis";
 
 import { DistributedLockError } from "./distributed-lock.error";
 import { getKey, getUniqueId } from "./distributed-lock.util";
-import { createRedisClient, DistributedLockConfig } from "./redis.client";
+import { createRedisClient } from "./redis.client";
 import { parityDel } from "./redis.utils";
 
 import type {
@@ -10,6 +10,7 @@ import type {
   LockId,
   LockOptions,
 } from "./distributed-lock.types";
+import type { DistributedLockConfig } from "./redis.client";
 
 /**
  * @public

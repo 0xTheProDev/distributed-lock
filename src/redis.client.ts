@@ -1,4 +1,5 @@
-import Redis, { RedisOptions } from "ioredis";
+import Redis from "ioredis";
+import type { RedisOptions } from "ioredis";
 
 /**
  * @public
