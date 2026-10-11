@@ -27,10 +27,17 @@ jobs:
           cache-version-file: .bun-version
           version-file: .nvmrc
 
+      - name: Capture Target Version
+        run: |
+          if pnpm changeset status --output=release.json; then
+            echo "TARGET_VERSION=$(jq -r '.releases[] | select(.type != \"none\") | .newVersion' release.json)" >> "$GITHUB_ENV"
+            rm release.json
+          fi
+
       - name: Create Release Pull Request
         uses: changesets/action@v2
         with:
-          pr-title: "chore: Release Packages"
+          pr-title: "ci(release): Release Package distributed-lock@v${{ env.TARGET_VERSION }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
