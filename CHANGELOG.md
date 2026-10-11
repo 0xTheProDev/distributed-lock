@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.1
+
+### Patch Changes
+
+- 3aa8da8: Bump IO Redis Dependency to v6
+
 ## 0.3.0
 
 ### Minor Changes
